@@ -1,0 +1,17 @@
+server:
+    port: 8089
+spring:
+    datasource:
+        username: root
+        password: zgmajun45
+        url: jdbc:mysql:///jpa
+        driver-class-name: com.mysql.jdbc.Driver
+        type: com.alibaba.druid.pool.DruidDataSource
+    jpa:
+        show-sql: true
+        database: mysql
+        hibernate:
+            ddl-auto: update
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.MySQL57Dialect
