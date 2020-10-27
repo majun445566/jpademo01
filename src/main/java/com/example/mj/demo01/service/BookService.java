@@ -14,7 +14,7 @@ import java.util.List;
  * @Version:1.0
  **/
 @Service
-public class BookSservice {
+public class BookService {
     @Autowired
     BookDAO bookDAO;
     public List<Book> getBooks(){
