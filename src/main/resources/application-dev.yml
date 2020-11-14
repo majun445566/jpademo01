@@ -4,7 +4,7 @@ spring:
     datasource:
         username: root
         password: zgmajun45
-        url: jdbc:mysql:///jpa
+        url: jdbc:mysql:///jpa?characterEncoding=utf-8
         driver-class-name: com.mysql.jdbc.Driver
         type: com.alibaba.druid.pool.DruidDataSource
     jpa:
@@ -15,3 +15,4 @@ spring:
         properties:
             hibernate:
                 dialect: org.hibernate.dialect.MySQL57Dialect
+                enable_lazy_load_no_trans: true

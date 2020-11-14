@@ -3,7 +3,9 @@ package com.example.mj.demo01.controller;
 import com.example.mj.demo01.entity.Book;
 import com.example.mj.demo01.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -19,16 +21,24 @@ import java.util.List;
 public class BookController {
     @Autowired
     BookService bookService;
-    @RequestMapping("all")
+    @RequestMapping("/all")
     public List<Book> getUserAll(){
         return bookService.getBooks();
     }
-    @RequestMapping("initBooks")
+    @RequestMapping("/initBooks")
     public String initBooks(){
         for (int i =0;i<20;i++){
-            Book book = new Book(i,"name"+i);
+            Book book = Book.builder().id(i).name("name"+i).build();
             bookService.insertBook(book);
         }
         return "hello word";
+    }
+    @RequestMapping("/saveBook")
+    public Book saveBook(@RequestBody Book book){
+        return bookService.insertBook(book);
+    }
+    @RequestMapping("/queryBookById")
+    public Book queryBookById(Integer id){
+        return bookService.queryBookById(id);
     }
 }

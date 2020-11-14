@@ -17,10 +17,20 @@ import java.util.List;
 public class BookService {
     @Autowired
     BookDAO bookDAO;
-    public List<Book> getBooks(){
+
+    public List<Book> getBooks() {
         return bookDAO.findAll();
     }
-    public void insertBook(Book book){
-        bookDAO.save(book);
+
+    public Book insertBook(Book book) {
+        return bookDAO.save(book);
+    }
+
+    public void deleteBook(Book book) {
+        bookDAO.delete(book);
+    }
+
+    public Book queryBookById(Integer id) {
+        return bookDAO.findById(id).orElse(new Book());
     }
 }
